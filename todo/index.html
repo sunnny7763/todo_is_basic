@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+
+<style>
+    #container {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    header {
+        background-color: #ccc;
+        padding: 10px;
+    }
+
+    #todo-list {
+        list-style-type: none;
+    }
+
+    #todo-list li {
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <header>
+            <h1>Todo List</h1>
+        </header>
+        <section>
+            <ul id="todo-list">
+            </ul>
+        </section>
+        <footer>
+            <input type="text" id="input-task" placeholder="할 일을 입력하세요.">
+            <button id="btn-add">추가</button>
+        </footer>
+    </div>
+    <script>
+        function 투두입력받아서추가하기() {
+            const todoText = document.querySelector("#input-task").value;
+            const newLiText = "<li>" + todoText + "</li>";
+            const selectedUl = document.querySelector("#todo-list");
+            if (todoText) {
+                selectedUl.innerHTML += newLiText;
+                document.querySelector("#input-task").value = "";
+            }
+            else {
+                alert("입력창에 할 일을 입력하세요");
+            }
+        }
+
+        document.querySelector("#btn-add").addEventListener("click", 투두입력받아서추가하기);
+
+        function init() {
+            const todoListUl = document.querySelector("#todo-list");
+            if (todoListUl.childElementCount < 1) {
+                todoListUl.innerText = "할일이 없습니다."
+                console.log("조건문 안에 코드가 실행됨!");
+            }
+            console.log("조건문 안에 코드가 실행 안됨!");
+        }
+        init()
+    </script>
+</body>
+
+</html>
